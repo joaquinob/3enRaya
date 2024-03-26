@@ -42,9 +42,11 @@ function placeToken() {
         if(currentPlayer === 1) {
             this.textContent = TOKEN1;
             switchPlayer(2);
+            console.log(getBoardArray());
         } else {
             this.textContent = TOKEN2;
             switchPlayer(1);
+            console.log(getBoardArray());
         };
     };
 };
@@ -60,24 +62,13 @@ function cleanBoard() {
     board$.innerHTML = '';
 };
 
-function arrayBloq() {
-    let board$ = document.querySelector('#board');
-    let trs$ = board$.querySelectorAll('tr');
-    let boardArray = [];
-    
-    for (let tr$ of trs$) {
-        let tds$ = tr$.querySelectorAll('td');
-        let row = [];
-        
-    }
-}
 
 function getBoardArray() {
     let board$ = document.querySelector('#board');
-    let trs$ = board$.querySelector('tr');
+    let trs$ = board$.querySelectorAll('tr');
     let boardArray = [];
     for (let tr$ of trs$) {
-        let tds$ =tr$.querySelector('td');
+        let tds$ =tr$.querySelectorAll('td');
         let row = [];
         for(let td$ of tds$) {
             row.push(td$.textContent);
@@ -86,4 +77,26 @@ function getBoardArray() {
     }
 
     return boardArray;
-}
+};
+
+
+function checkWin() {
+    if(boardArray[0][0] == boardArray[0][1] && boardArray[0][0] == boardArray [0][2] && boardArray[0][0]){
+        return true;
+    } else if (boardArray[1][0] == boardArray[1][1] && boardArray[1][0] == boardArray [1][2] && boardArray[1][0]){
+        return true;
+    } else if (boardArray[2][0] == boardArray[2][1] && boardArray[2][0] == boardArray [2][2] && boardArray[2][0]){
+        return true;
+    } else if (boardArray[0][0] == boardArray[1][0] && boardArray[0][0] == boardArray [2][0] && boardArray[0][0]){
+        return true;
+    } else if (boardArray[0][1] == boardArray[1][1] && boardArray[0][1] == boardArray [2][1] && boardArray[0][1]){
+        return true;
+    } else if (boardArray[0][2] == boardArray[1][2] && boardArray[0][2] == boardArray [2][2] && boardArray[0][2]){
+        return true;
+    } else if (boardArray[0][0] == boardArray[1][1] && boardArray[0][0] == boardArray [2][2] && boardArray[0][0]){
+        return true;
+    } else if (boardArray[0][2] == boardArray[1][1] && boardArray[0][2] == boardArray [2][0] && boardArray[0][2]){
+        return true;
+    }
+};
+
