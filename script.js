@@ -71,3 +71,19 @@ function arrayBloq() {
         
     }
 }
+
+function getBoardArray() {
+    let board$ = document.querySelector('#board');
+    let trs$ = board$.querySelector('tr');
+    let boardArray = [];
+    for (let tr$ of trs$) {
+        let tds$ =tr$.querySelector('td');
+        let row = [];
+        for(let td$ of tds$) {
+            row.push(td$.textContent);
+        }
+        boardArray.push(row);
+    }
+
+    return boardArray;
+}
